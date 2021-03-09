@@ -1,2 +1,2 @@
-# video-player
+# music-player
 ## work in progress...
