@@ -4,12 +4,6 @@ const media = document.querySelector(".media");
 const overlay = document.querySelector(".overlay");
 const searchElm = document.querySelector("#search");
 
-searchElm.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    getContent(searchElm.value);
-  }
-});
-
 const getContent = (search) => {
   const url = new URL("https://itunes.apple.com/search");
   const params = { term: search, media: "musicVideo" };
@@ -31,4 +25,26 @@ const getContent = (search) => {
 
 const openMedia = (url, title) => {
   media.innerHTML = `<video controls autoplay src="${url}"></video><p>${title}</p>`;
+  media.classList.remove("hidden");
+  toggleOverlay();
 };
+
+const closeMedia = () => {
+  media.innerHTML = "";
+  toggleOverlay();
+};
+
+const toggleOverlay = () => {
+  overlay.classList.toggle("blur");
+  document
+    .querySelectorAll(".result")
+    .forEach((result) => result.classList.toggle("blur"));
+};
+
+overlay.addEventListener("click", closeMedia);
+
+searchElm.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    getContent(searchElm.value);
+  }
+});
