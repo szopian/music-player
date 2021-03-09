@@ -1,2 +1,2 @@
-# my-blog-react-app
+# video-player
 ## work in progress...
