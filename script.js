@@ -2,7 +2,13 @@ const container = document.querySelector(".container");
 const artistImage = document.querySelector(".artist");
 const media = document.querySelector(".media");
 const overlay = document.querySelector(".overlay");
-const serchElm = document.querySelector("#search");
+const searchElm = document.querySelector("#search");
+
+searchElm.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    getContent(searchElm.value);
+  }
+});
 
 const getContent = (search) => {
   const url = new URL("https://itunes.apple.com/search");
@@ -11,8 +17,18 @@ const getContent = (search) => {
   fetch(url, { method: "POST" })
     .then((result) => result.json())
     .then((data) => {
-      console.log(data);
+      const resultHTML = data.results
+        .map(
+          (result) => `
+        <div style="background-image: url(${result.artworkUrl100});"
+        onclick="openMedia('${result.previewUrl}', '${result.trackCensoredName}')" class="result"></div>
+      `
+        )
+        .join("");
+      container.innerHTML = resultHTML;
     });
 };
 
-getContent("nirvana");
+const openMedia = (url, title) => {
+  media.innerHTML = `<video controls autoplay src="${url}"></video><p>${title}</p>`;
+};

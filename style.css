@@ -12,3 +12,19 @@ body {
   background-color: black;
   font: 14px;
 }
+
+.container {
+  margin: 100px auto 0;
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  transform: perspective(3500px) rotate3d(0, 1, 0, 50deg);
+}
+
+.result {
+  width: 110px;
+  height: 90px;
+  background-repeat: no-repeat;
+  background-size: over;
+  background-position: center;
+}
