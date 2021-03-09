@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Amatic SC", cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background-color: black;
+  font: 14px;
+}
