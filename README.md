@@ -1,2 +1,4 @@
 # music-player
-## work in progress...
+## Music Video Player  |  API  |  JavaScript  |  CSS  |  HTML
+
+
