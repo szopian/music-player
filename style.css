@@ -5,6 +5,11 @@
   font-family: "Amatic SC", cursive;
 }
 
+header {
+  text-align: center;
+  z-index: -1;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -27,6 +32,7 @@ body {
   background-repeat: no-repeat;
   background-size: over;
   background-position: center;
+  transition: all 1s ease;
 }
 
 .result:hover {
@@ -73,4 +79,24 @@ body {
 
 .overlay.blur {
   display: block;
+}
+
+#search {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  transition: all 1s ease;
+  position: absolute;
+  bottom: 225px;
+  right: 75px;
+}
+
+#search:focus {
+  bottom: 50%;
+  right: 50%;
+  transform: scale(2) translate(-50%, -50%);
 }
