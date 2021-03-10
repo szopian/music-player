@@ -2,7 +2,7 @@ const container = document.querySelector(".container");
 const artistImage = document.querySelector(".artist");
 const media = document.querySelector(".media");
 const overlay = document.querySelector(".overlay");
-const searchElm = document.querySelector("#search");
+const searchElem = document.querySelector("#search");
 
 const getContent = (search) => {
   const url = new URL("https://itunes.apple.com/search");
@@ -11,6 +11,7 @@ const getContent = (search) => {
   fetch(url, { method: "POST" })
     .then((result) => result.json())
     .then((data) => {
+      // console.log(data.results[0].artistViewUrl);
       const resultHTML = data.results
         .map(
           (result) => `
@@ -30,7 +31,7 @@ const openMedia = (url, title) => {
 };
 
 const closeMedia = () => {
-  media.innerHTML = "";
+  media.innerHTML = " ";
   toggleOverlay();
 };
 
@@ -43,8 +44,10 @@ const toggleOverlay = () => {
 
 overlay.addEventListener("click", closeMedia);
 
-searchElm.addEventListener("keydown", (event) => {
+searchElem.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
-    getContent(searchElm.value);
+    getContent(searchElem.value);
+    searchElem.blur();
+    toggleOverlay();
   }
 });
