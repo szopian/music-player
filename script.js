@@ -44,7 +44,10 @@ overlay.addEventListener("click", closeMedia);
 
 searchElem.addEventListener("keydown", (event) => {
   if (event.keyCode === 13) {
+    toggleOverlay();
     getContent(searchElem.value);
     searchElem.blur();
   }
 });
+
+searchElem.addEventListener("focus", toggleOverlay);
